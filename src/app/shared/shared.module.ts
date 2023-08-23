@@ -2,19 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
 @NgModule({
   declarations: [
-    SideBarComponent
+  
   ],
   imports: [
+    HeaderComponent,
+    SideBarComponent,
     CommonModule,
-    RouterModule
+    RouterModule,
+    NgbCollapseModule
   ],
   exports: [
-    SideBarComponent
+    SideBarComponent,
+    HeaderComponent
   ]
 })
 export class SharedModule { }
