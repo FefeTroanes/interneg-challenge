@@ -26,6 +26,9 @@
       ],
       "@shared/*": [
         "src/app/shared/*"
+      ],
+      "@services/*": [
+        "src/app/services/*"
       ]
     },
     "lib": [
