@@ -4,12 +4,15 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { NavComponent } from './components/nav/nav.component';
 
 
 
 @NgModule({
   declarations: [
   
+  
+    NavComponent
   ],
   imports: [
     HeaderComponent,
@@ -20,7 +23,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   exports: [
     SideBarComponent,
-    HeaderComponent
+    HeaderComponent,
+    NavComponent
   ]
 })
 export class SharedModule { }
