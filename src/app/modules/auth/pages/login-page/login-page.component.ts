@@ -32,7 +32,7 @@ export class LoginPageComponent {
 
       if(dataResponse) {
         localStorage.setItem("ATO", dataResponse.ATO);
-        this.router.navigate(['']);
+        this.router.navigate(['/abm']);
       }
     });
   }
