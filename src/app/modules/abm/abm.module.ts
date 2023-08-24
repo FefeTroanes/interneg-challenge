@@ -7,11 +7,11 @@ import { AbmPageComponent } from './pages/abm-page/abm-page.component';
 
 @NgModule({
   declarations: [
-    AbmPageComponent
   ],
   imports: [
     CommonModule,
-    AbmRoutingModule
+    AbmRoutingModule,
+    AbmPageComponent
   ]
 })
 export class AbmModule { }

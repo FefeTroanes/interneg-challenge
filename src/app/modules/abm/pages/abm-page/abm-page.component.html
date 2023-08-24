@@ -1,2 +1,15 @@
-<p>abm-page works!</p>
-<img class="img-fluid" src="https://images3.alphacoders.com/544/54465.jpg" alt="">
+<ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs justify-content-center">
+	<li [ngbNavItem]="1">
+		<button ngbNavLink>Clientes</button>
+	</li>
+	<li [ngbNavItem]="2">
+		<button ngbNavLink>Rubros</button>
+	</li>
+	<li [ngbNavItem]="3">
+		<button ngbNavLink>Productos</button>
+	</li>
+</ul>
+
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+<pre>Active: {{ active }}</pre>
