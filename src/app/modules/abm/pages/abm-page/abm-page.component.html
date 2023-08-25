@@ -33,3 +33,20 @@
   <h1>Contenido para Productos</h1>
   <app-table></app-table>
 </div>
+
+<table class="table table-warning table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let key of keysArray" scope="col">{{ key }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let client of clientsArray" >
+      <th scope="row">{{ client.nombre }}</th>
+      <th scope="row">{{ client.cuit_formateado }}</th>
+      <th scope="row">{{ client.email }}</th>
+      <th scope="row">{{ client.domicilio }}</th>
+      <th scope="row">{{ client.telefono }}</th>
+    </tr>
+  </tbody>
+</table>
