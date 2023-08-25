@@ -27,9 +27,9 @@
       "@shared/*": [
         "src/app/shared/*"
       ],
-      "@services/*": [
-        "src/app/services/*"
-      ]
+      // "@services/*": [
+      //   "src/app/modules/auth/services/*"
+      // ]
     },
     "lib": [
       "ES2022",
