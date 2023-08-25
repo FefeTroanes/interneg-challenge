@@ -12,12 +12,12 @@
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-<div *ngIf="active == 1">
+<div class="container" *ngIf="active == 1">
 	<app-table [headersArray]="clientHeaders" [dataArray]="clientsArray" [active]="active" ></app-table>
 </div>
-<div *ngIf="active == 2">
+<div class="container"  *ngIf="active == 2">
   <app-table [headersArray]="itemHeaders" [dataArray]="itemsArray" [active]="active"></app-table>
 </div>
-<div *ngIf="active == 3">
+<div class="container" *ngIf="active == 3">
   <app-table [headersArray]="productHeaders" [dataArray]="productsArray" [active]="active"></app-table>
 </div>
