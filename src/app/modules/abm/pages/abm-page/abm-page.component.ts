@@ -46,7 +46,7 @@ export class AbmPageComponent {
   onClientsClick() {
     this.clientsArray = []
     this.itemsArray = [];
-    this.clientsArray = [];
+    this.productsArray = [];
 
     if (this.active == 1) {
       this.recurso = 'clientes';
