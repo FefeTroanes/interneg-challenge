@@ -1,15 +1,35 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs justify-content-center">
 	<li [ngbNavItem]="1">
-		<button ngbNavLink>Clientes</button>
+		<button ngbNavLink (click)="onClientsClick()">Clientes</button>
 	</li>
 	<li [ngbNavItem]="2">
-		<button ngbNavLink>Rubros</button>
+		<button ngbNavLink (click)="onClientsClick()">Rubros</button>
 	</li>
 	<li [ngbNavItem]="3">
-		<button ngbNavLink>Productos</button>
+		<button ngbNavLink (click)="onClientsClick()">Productos</button>
 	</li>
 </ul>
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
 <pre>Active: {{ active }}</pre>
+
+<div *ngIf="active == 1">
+  <h1>Tabla de Clientes</h1>
+  <ul>
+    <li>Nombre</li>
+    <li>CUIT</li>
+    <li>email</li>
+    <li>domicilio</li>
+    <li>Telefono</li>
+  </ul>
+	<app-table></app-table>
+</div>
+<div *ngIf="active == 2">
+  <h1>Contenido para Rubros</h1>
+  <app-table></app-table>
+</div>
+<div *ngIf="active == 3">
+  <h1>Contenido para Productos</h1>
+  <app-table></app-table>
+</div>

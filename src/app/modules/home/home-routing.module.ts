@@ -12,6 +12,10 @@ const routes: Routes = [
   {
     path: 'pdv',
     loadChildren: () => import('@modules/pdv/pdv.module').then(m => m.PdvModule)
+  },
+  {
+    path: '**',
+    redirectTo: '/abm'
   }
 ];
 
