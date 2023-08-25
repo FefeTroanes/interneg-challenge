@@ -1,1 +1,74 @@
-<p>table works!</p>
+<div *ngIf="active == 1">
+    <table class="table table-warning table-striped m-2">
+      <thead>
+        <tr>
+          <th *ngFor="let header of headersArray" scope="col">{{ header }}</th>
+          <th scope="row">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of dataArray" >
+          <th scope="row">{{ client.nombre }}</th>
+          <th scope="row">{{ client.cuit_formateado }}</th>
+          <th scope="row">{{ client.email }}</th>
+          <th scope="row">{{ client.domicilio }}</th>
+          <th scope="row">{{ client.telefono }}</th>
+          <th scope="row">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-sm btn-info">Ver</button>
+              <button type="button" class="btn btn-sm btn-primary">Editar</button>
+              <button type="button" class="btn btn-sm btn-danger">Eliminar</button>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div *ngIf="active == 2">
+    <table class="table table-warning table-striped m-2">
+      <thead>
+        <tr>
+          <th *ngFor="let header of headersArray" scope="col">{{ header }}</th>
+          <th scope="row">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of dataArray" >
+          <th scope="row">{{ item.nombre }}</th>
+          <th scope="row">{{ item.codigo }}</th>
+          <th scope="row">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-sm btn-info">Ver</button>
+              <button type="button" class="btn btn-sm btn-primary">Editar</button>
+              <button type="button" class="btn btn-sm btn-danger">Eliminar</button>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div *ngIf="active == 3">
+    <table class="table table-warning table-striped m-2">
+      <thead>
+        <tr>
+          <th *ngFor="let header of headersArray" scope="col">{{ header }}</th>
+          <th scope="row">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of dataArray" >
+          <th scope="row">{{ product.nombre }}</th>
+          <th scope="row">{{ product.codigo }}</th>
+          <th scope="row">{{ product.precio }}</th>
+          <th scope="row">{{ product.rubro?.nombre }}</th>
+          <th scope="row">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-sm btn-info">Ver</button>
+              <button type="button" class="btn btn-sm btn-primary">Editar</button>
+              <button type="button" class="btn btn-sm btn-danger">Eliminar</button>
+            </div>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+</div>

@@ -12,79 +12,12 @@
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-<pre>Active: {{ active }}</pre>
-
 <div *ngIf="active == 1">
-  <h1>Tabla de Clientes</h1>
-  <ul>
-    <li>Nombre</li>
-    <li>CUIT</li>
-    <li>email</li>
-    <li>domicilio</li>
-    <li>Telefono</li>
-  </ul>
-	<app-table></app-table>
-  <table class="table table-warning table-striped m-2">
-    <thead>
-      <tr>
-        <th *ngFor="let header of clientHeaders" scope="col">{{ header }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let client of clientsArray" >
-        <th scope="row">{{ client.nombre }}</th>
-        <th scope="row">{{ client.cuit_formateado }}</th>
-        <th scope="row">{{ client.email }}</th>
-        <th scope="row">{{ client.domicilio }}</th>
-        <th scope="row">{{ client.telefono }}</th>
-      </tr>
-    </tbody>
-  </table>
+	<app-table [headersArray]="clientHeaders" [dataArray]="clientsArray" [active]="active" ></app-table>
 </div>
 <div *ngIf="active == 2">
-  <h1>Tabla de Rubros</h1>
-  <ul>
-    <li>Nombre</li>
-    <li>Codigo</li>
-  </ul>
-  <app-table></app-table>
-  <table class="table table-warning table-striped m-2">
-    <thead>
-      <tr>
-        <th *ngFor="let header of itemHeaders" scope="col">{{ header }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of itemsArray" >
-        <th scope="row">{{ item.nombre }}</th>
-        <th scope="row">{{ item.codigo }}</th>
-      </tr>
-    </tbody>
-  </table>
+  <app-table [headersArray]="itemHeaders" [dataArray]="itemsArray" [active]="active"></app-table>
 </div>
 <div *ngIf="active == 3">
-  <h1>Tabla de Productos</h1>
-  <ul>
-    <li>Nombre</li>
-    <li>Codigo</li>
-    <li>Precio</li>
-    <li>Rubro id</li>
-  </ul>
-  <app-table></app-table>
-  <table class="table table-warning table-striped m-2">
-    <thead>
-      <tr>
-        <th *ngFor="let header of productHeaders" scope="col">{{ header }}</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of productsArray" >
-        <th scope="row">{{ product.nombre }}</th>
-        <th scope="row">{{ product.codigo }}</th>
-        <th scope="row">{{ product.precio }}</th>
-        <th scope="row">{{ product.rubro?.nombre }}</th>
-      </tr>
-    </tbody>
-  </table>
+  <app-table [headersArray]="productHeaders" [dataArray]="productsArray" [active]="active"></app-table>
 </div>
-

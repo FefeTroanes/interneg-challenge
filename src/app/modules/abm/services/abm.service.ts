@@ -19,8 +19,6 @@ export class AbmService {
   this = localStorage.getItem('ATO');
 
   getAllClients$(recurso: string): Observable<any> {
-    console.log(`Recurso: ${recurso}`)
-
     let token = localStorage.getItem('ATO');
     let headers = new HttpHeaders().set("Authorization", `${token}`);
     this.data = this.http.get(`${this.URL}/${recurso}`, {headers: headers});

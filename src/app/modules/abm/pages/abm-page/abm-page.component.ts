@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { AbmService } from '@modules/abm/services/abm.service';
-import { fromEvent } from 'rxjs';
-import {NgForOf, NgIf} from "@angular/common";
-import {SharedModule} from "@shared/shared.module";
+import { NgForOf, NgIf } from "@angular/common";
+import { SharedModule } from "@shared/shared.module";
 import { Client } from 'src/app/core/models/client.model';
-import {Item} from "../../../../core/models/item.model";
+import { Item } from "../../../../core/models/item.model";
 import { Product } from 'src/app/core/models/product.model';
 
 @Component({
@@ -20,19 +19,11 @@ export class AbmPageComponent {
   active = 1;
 
   recurso: string = 'clientes';
-  // recurso: string = 'rubros';
-  // recurso: string = 'productos';
 
-  constructor(private abmService: AbmService) {}
+  constructor(private abmService: AbmService) { }
 
   ngOnInit(): void {
-    this.abmService.getAllClients$(this.recurso).toPromise()
-      .then( response => {
-        console.log(response);
-      })
-      .catch( err => {
-        console.log(err);
-      });
+    this.onClientsClick();
   }
 
   clientHeaders: string[] = ["Nombre", "CUIT", "Email", "Domicilio", "Teléfono"];
@@ -41,17 +32,28 @@ export class AbmPageComponent {
 
   clientsArray: Client[] = [];
   itemsArray: Item[] = [];
-  productsArray: Product[] = []
+  productsArray: Product[] = [];
 
   onClientsClick() {
-    this.clientsArray = []
+    this.clientsArray = [];
     this.itemsArray = [];
     this.productsArray = [];
 
-    if (this.active == 1) {
-      this.recurso = 'clientes';
-      this.abmService.getAllClients$(this.recurso).subscribe(data => {
-        for (let i=0; i < data.data.length; i++) {
+    switch (this.active) {
+      case 1:
+        this.recurso = 'clientes';
+        break;
+      case 2:
+        this.recurso = 'rubros';
+        break;
+      case 3:
+        this.recurso = 'productos';
+        break;
+    }
+
+    this.abmService.getAllClients$(this.recurso).subscribe(data => {
+      for (let i = 0; i < data.data.length; i++) {
+        if (this.active == 1) {
           let client: Client = {
             id: data.data[i].id,
             cuit: data.data[i].cuit,
@@ -64,13 +66,7 @@ export class AbmPageComponent {
             cuit_formateado: data.data[i].cuit_formateado,
           }
           this.clientsArray.push(client);
-        }
-        console.log('client array ', this.clientsArray);
-      })
-    } else if (this.active == 2) {
-      this.recurso = 'rubros';
-      this.abmService.getAllClients$(this.recurso).subscribe(data => {
-        for (let i=0; i < data.data.length; i++) {
+        } else if (this.active == 2) {
           let item: Item = {
             id: data.data[i].id,
             codigo: data.data[i].codigo,
@@ -81,13 +77,7 @@ export class AbmPageComponent {
             numero: data.data[i].numero
           }
           this.itemsArray.push(item);
-        }
-        console.log('client array ', this.itemsArray);
-      })
-    } else if (this.active == 3) {
-      this.recurso = 'productos';
-      this.abmService.getAllClients$(this.recurso).subscribe(data => {
-        for (let i=0; i < data.data.length; i++) {
+        } else if (this.active == 3) {
           let product: Product = {
             id: data.data[i].id,
             rubro_id: data.data[i].rubro_id,
@@ -102,8 +92,7 @@ export class AbmPageComponent {
           }
           this.productsArray.push(product);
         }
-        console.log('client array ', this.productsArray);
-      })
-    }
+      }
+    });
   }
 }
