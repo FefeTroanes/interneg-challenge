@@ -5,14 +5,14 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavComponent } from './components/nav/nav.component';
+import { TableComponent } from './components/table/table.component';
 
 
 
 @NgModule({
   declarations: [
-  
-  
-    NavComponent
+    NavComponent,
+    TableComponent
   ],
   imports: [
     HeaderComponent,
@@ -24,7 +24,8 @@ import { NavComponent } from './components/nav/nav.component';
   exports: [
     SideBarComponent,
     HeaderComponent,
-    NavComponent
+    NavComponent,
+    TableComponent
   ]
 })
 export class SharedModule { }
