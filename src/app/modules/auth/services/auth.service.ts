@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  apiUrl: string = 'https://interneg.ddns.net/api-challenge';
+  readonly apiUrl: string = 'https://interneg.ddns.net/api-challenge';
 
   sendCredentials(username: string, password: string): Observable<Response> {
     let url = `${this.apiUrl}/login`;
