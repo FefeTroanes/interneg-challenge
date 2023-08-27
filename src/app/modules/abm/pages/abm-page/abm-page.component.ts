@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { AbmService } from '@modules/abm/services/abm.service';
 import { NgForOf, NgIf } from "@angular/common";
 import { SharedModule } from "@shared/shared.module";
@@ -20,12 +20,13 @@ export class AbmPageComponent {
 
   recurso: string = 'clientes';
 
-  constructor(private abmService: AbmService) { }
+  constructor(private abmService: AbmService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    this.onClientsClick();
+    this.onClientsClick(this.active);
   }
 
+  // Table Data
   clientHeaders: string[] = ["Nombre", "CUIT", "Email", "Domicilio", "Teléfono"];
   itemHeaders: string[] = ["Nombre", "Codigo"];
   productHeaders: string[] = ["Nombre", "Codigo", "Precio", "Rubro"];
@@ -34,12 +35,18 @@ export class AbmPageComponent {
   itemsArray: Item[] = [];
   productsArray: Product[] = [];
 
-  onClientsClick() {
+  // Pagination data
+  totalResults: number = 0;
+  actualPage: number = 0;
+  resultPerPage: number = 0;
+
+
+  onClientsClick(active: number) {
     this.clientsArray = [];
     this.itemsArray = [];
     this.productsArray = [];
 
-    switch (this.active) {
+    switch (active) {
       case 1:
         this.recurso = 'clientes';
         break;
@@ -93,6 +100,17 @@ export class AbmPageComponent {
           this.productsArray.push(product);
         }
       }
+      console.log('data', data);
+      console.log('cantidad,', data.pagination.resultPerPage);
+      this.totalResults = data.pagination.totalResults;
+      this.actualPage = data.pagination.actualPage;
+      this.resultPerPage = data.pagination.resultPerPage;
+
+
     });
+  }
+
+  openVerticallyCentered(content: any) {
+    this.modalService.open(content, { centered: true });
   }
 }

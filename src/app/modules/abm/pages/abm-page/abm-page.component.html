@@ -1,23 +1,56 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs justify-content-center">
 	<li [ngbNavItem]="1">
-		<button ngbNavLink (click)="onClientsClick()">Clientes</button>
+		<button ngbNavLink (click)="onClientsClick(active)">Clientes</button>
 	</li>
 	<li [ngbNavItem]="2">
-		<button ngbNavLink (click)="onClientsClick()">Rubros</button>
+		<button ngbNavLink (click)="onClientsClick(active)">Rubros</button>
 	</li>
 	<li [ngbNavItem]="3">
-		<button ngbNavLink (click)="onClientsClick()">Productos</button>
+		<button ngbNavLink (click)="onClientsClick(active)">Productos</button>
 	</li>
 </ul>
 
-<div [ngbNavOutlet]="nav" class="mt-2"></div>
+<!--<div [ngbNavOutlet]="nav" class="mt-2"></div>-->
 
 <div class="container" *ngIf="active == 1">
-	<app-table [headersArray]="clientHeaders" [dataArray]="clientsArray" [active]="active" ></app-table>
+	<app-table
+    [headersArray]="clientHeaders"
+    [dataArray]="clientsArray"
+    [active]="active"
+    [collectionSize]="totalResults"
+    [page]="actualPage"
+    [pageSize]="resultPerPage"
+  ></app-table>
 </div>
 <div class="container"  *ngIf="active == 2">
-  <app-table [headersArray]="itemHeaders" [dataArray]="itemsArray" [active]="active"></app-table>
+  <app-table
+    [headersArray]="itemHeaders"
+    [dataArray]="itemsArray"
+    [active]="active"
+    [collectionSize]="totalResults"
+    [page]="actualPage"
+    [pageSize]="resultPerPage"
+  ></app-table>
 </div>
 <div class="container" *ngIf="active == 3">
-  <app-table [headersArray]="productHeaders" [dataArray]="productsArray" [active]="active"></app-table>
+  <app-table
+    [headersArray]="productHeaders"
+    [dataArray]="productsArray"
+    [active]="active"
+    [collectionSize]="totalResults"
+    [page]="actualPage"
+    [pageSize]="resultPerPage"
+  ></app-table>
+</div>
+
+<div class="container" *ngIf="active == 1">
+  <app-modal [modalTitle]="'Nuevo Cliente'">
+    <app-client-form></app-client-form>
+  </app-modal>
+</div>
+<div class="container" *ngIf="active == 2">
+  <app-modal [modalTitle]="'Nuevo Rubro'"></app-modal>
+</div>
+<div class="container" *ngIf="active == 3">
+  <app-modal [modalTitle]="'Nuevo Producto'"></app-modal>
 </div>
