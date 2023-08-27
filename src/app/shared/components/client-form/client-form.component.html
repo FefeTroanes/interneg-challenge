@@ -1,0 +1,26 @@
+<form class="add-form" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <label class="form-label" for="nombre">Nombre</label>
+    <input class="form-control" type="text" name="nombre" [(ngModel)]="nombre" id="nombre" placeholder="John Doe">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="cuit">CUIT</label>
+    <input class="form-control" type="text" name="cuit" [(ngModel)]="cuit" id="cuit" placeholder="20123456789" aria-describedby="cuitHelperBlock">
+    <div id="cuitHelperBlock" class="form-text">
+      Sin espacios ni guiones, sólo números.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="email">Email</label>
+    <input class="form-control" type="email" name="email" [(ngModel)]="email" id="email" placeholder="john@doe.com">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="domicilio">Domicilio</label>
+    <input class="form-control" type="text" name="domicilio" [(ngModel)]="domicilio" id="domicilio" placeholder="887 Springview Trail">
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="telefono">Teléfono</label>
+    <input class="form-control" type="tel" name="telefono" [(ngModel)]="telefono" id="telefono" placeholder="+5493416837663">
+  </div>
+  <input type="submit" value="Crear cliente" class="btn btn-dark">
+</form>
