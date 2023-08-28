@@ -20,6 +20,7 @@
     [collectionSize]="totalResults"
     [page]="actualPage"
     [pageSize]="resultPerPage"
+    (onViewClient)="viewClient(tempClient)"
   ></app-table>
 </div>
 <div class="container"  *ngIf="active == 2">
@@ -43,11 +44,11 @@
   ></app-table>
 </div>
 
-<div class="container" *ngIf="active == 1">
-  <app-modal [modalTitle]="'Nuevo Cliente'">
-    <app-client-form></app-client-form>
-  </app-modal>
-</div>
+<!--<div class="container" *ngIf="active == 1">-->
+<!--  <app-modal [modalTitle]="'Nuevo Cliente'">-->
+<!--    <app-client-form></app-client-form>-->
+<!--  </app-modal>-->
+<!--</div>-->
 <div class="container" *ngIf="active == 2">
   <app-modal [modalTitle]="'Nuevo Rubro'"></app-modal>
 </div>

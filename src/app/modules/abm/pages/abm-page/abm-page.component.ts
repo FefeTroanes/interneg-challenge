@@ -39,6 +39,7 @@ export class AbmPageComponent {
   totalResults: number = 0;
   actualPage: number = 0;
   resultPerPage: number = 0;
+  tempClient: Client | undefined;
 
 
   onClientsClick(active: number) {
@@ -110,7 +111,13 @@ export class AbmPageComponent {
     });
   }
 
-  openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+  // openVerticallyCentered(content: Client) {
+  //   this.modalService.open(content, { centered: true });
+  // }
+
+  viewClient(client: Client | undefined) {
+    this.tempClient = client;
+    this.modalService.open(client, { centered: true });
+    console.log('esteee', this.tempClient);
   }
 }

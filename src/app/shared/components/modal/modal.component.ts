@@ -17,5 +17,6 @@ export class ModalComponent {
 
   openVerticallyCentered(content: any) {
     this.modalService.open(content, { centered: true });
+    console.log('content', content);
   }
 }

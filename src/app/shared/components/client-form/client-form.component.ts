@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Subscription } from "rxjs";
 import { Client } from "../../../core/models/client.model";
 import { AbmService } from "@modules/abm/services/abm.service";
+
 @Component({
   selector: 'app-client-form',
   templateUrl: './client-form.component.html',
@@ -9,12 +10,19 @@ import { AbmService } from "@modules/abm/services/abm.service";
 })
 export class ClientFormComponent {
   // @Output() onAddTask: EventEmitter<Task> = new EventEmitter
+  // @Input() nombre!: string;
+  // @Input() cuit!: string;
+  // @Input() email!: string;
+  // @Input() domicilio!: string;
+  // @Input() telefono!: string;
 
-  nombre!: string;
-  cuit!: string;
-  email!: string;
-  domicilio!: string;
-  telefono!: string;
+  @Input() editClient?: Client;
+
+  nombre: string = this.editClient ? this.editClient.nombre : '';
+  cuit: string = this.editClient ? this.editClient.cuit : '';
+  email: string = this.editClient ? this.editClient.email : '';
+  domicilio: string = this.editClient ? this.editClient.domicilio : '';
+  telefono: string = this.editClient ? this.editClient.telefono : '';
 
   constructor(private abmService: AbmService ) {}
   // subscription: Subscription;

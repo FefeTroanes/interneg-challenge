@@ -1,8 +1,9 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {DecimalPipe, NgFor} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import {NgbPaginationModule, NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModal, NgbPaginationModule, NgbTypeaheadModule} from "@ng-bootstrap/ng-bootstrap";
 import { AbmService } from "@modules/abm/services/abm.service";
+import {Client} from "../../../core/models/client.model";
 
 @Component({
   selector: 'app-table',
@@ -19,17 +20,35 @@ export class TableComponent {
   @Input() page: number = 1;
   @Input() pageSize: number = 6;
 
+  @Output() onViewClient: EventEmitter<Client> = new EventEmitter();
+
   recurso: string = 'clientes';
+  tempClient?: Client;
 
   // page = 1;
   // pageSize = 4;
   // collectionSize = this.dataArray.length;
   countries: any[] | undefined;
 
-  constructor(private abmService: AbmService) {
+  constructor(private abmService: AbmService, private modalService: NgbModal) {
     // this.refreshCountries();
   }
 
+  onView(client: Client) {
+    this.onViewClient.emit(client);
+    this.tempClient = {
+      id:  client.id,
+      cuit: client.cuit,
+      nombre: client.nombre,
+      email: client.email,
+      telefono: client.telefono,
+      domicilio: client.domicilio
+    }
+    console.log('tempclient: ', this.tempClient);
+    // this.modalService.open(this.tempClient, { centered: true });
+
+
+  }
   refreshCountries() {
     this.countries = this.dataArray.map((country, i) => ({ id: i + 1, ...country })).slice(
       (this.page - 1) * this.pageSize,
