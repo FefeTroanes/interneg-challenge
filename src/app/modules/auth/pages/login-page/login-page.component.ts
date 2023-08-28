@@ -10,6 +10,7 @@ import { Response } from 'src/app/core/models/response.model';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent {
+  errorSession: boolean = false;
   formLogin: FormGroup = new FormGroup({})
 
   constructor(private authServce: AuthService, private router: Router) {}
@@ -34,6 +35,8 @@ export class LoginPageComponent {
         localStorage.setItem("ATO", dataResponse.ATO);
         this.router.navigate(['/abm']);
       }
+    }, error => {
+      this.errorSession = true;
     });
   }
 }
